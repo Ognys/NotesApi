@@ -7,8 +7,10 @@ public class UserModel
     public string UserName { get; set; }
     public string HashPassword { get; set; }
 
-    public UserModel()
+    public UserModel(string username, string hashpassword)
     {
+        UserName = username;
+        HashPassword = hashpassword;
         Id = staticId++;
     }
 }

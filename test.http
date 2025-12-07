@@ -1,0 +1,30 @@
+# POST http://localhost:5190/auth/register
+# Content-Type: application/json
+
+# {
+#     "UserName": "Danil",
+#     "Password": "Danilka"
+# }
+
+# POST http://localhost:5190/auth/login
+# Content-Type: application/json
+
+# {
+#     "UserName": "Danil",
+#     "Password": "Danilka"
+# }
+
+# GET http://localhost:5190/users
+
+# POST http://localhost:5190/notes
+# Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkRhbmlsIiwiaWQiOiIyIiwiZXhwIjoxNzY1MDk2OTk0LCJpc3MiOiJ5b3VyQXBwIiwiYXVkIjoieW91ckFwcCJ9.NQWb5rAt2QPthiMCNfYCcmlKy8248c83NRXyvmhUAsw
+
+# {
+#     "Title": "Колледж",
+#     "Description": "Быть сегодня в колледже"
+# }
+
+GET http://localhost:5190/notes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Illhcm9zbGF2IiwiaWQiOiIxIiwiZXhwIjoxNzY1MDk2ODI4LCJpc3MiOiJ5b3VyQXBwIiwiYXVkIjoieW91ckFwcCJ9.WqPMVteEefAoZUyjH-MogdI7MpIdpRZedawRslDGd7Y
+
