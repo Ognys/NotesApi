@@ -82,4 +82,55 @@ app.MapGet("/notes", (HttpContext hc) =>
 
 });
 
+app.MapPut("/notes/{id:int}", (PutNotes putnotes, int id, HttpContext hc) =>
+{
+    if (!hc.Request.Headers.TryGetValue("Authorization", out var authHeader))
+        return Results.Unauthorized();
+
+    string header = authHeader.ToString();
+
+    if (!header.StartsWith("Bearer "))
+        return Results.Unauthorized();
+
+
+    int userid = ServiceApi.GetIdJwt(hc);
+
+    for (int i = 0; i < listNote.Count; i++)
+    {
+        if (listNote[i].UserId == userid && listNote[i].Id == id)
+        {
+            listNote[i].Title = putnotes.Title;
+            listNote[i].Description = putnotes.Description;
+            return Results.Ok(listNote[i]);
+        }
+    }
+
+    return Results.Forbid();
+
+});
+
+app.MapDelete("/notes/{id:int}", (int id, HttpContext hc) =>
+{
+    if (!hc.Request.Headers.TryGetValue("Authorization", out var authHeader))
+        return Results.Unauthorized();
+
+    string header = authHeader.ToString();
+
+    if (!header.StartsWith("Bearer "))
+        return Results.Unauthorized();
+
+    int userid = ServiceApi.GetIdJwt(hc);
+
+    for (int i = 0; i < listNote.Count; i++)
+    {
+        if (listNote[i].UserId == userid && listNote[i].Id == id)
+        {
+            listNote.RemoveAt(i);
+            return Results.Ok();
+        }
+    }
+
+    return Results.Forbid();
+});
+
 app.Run();
